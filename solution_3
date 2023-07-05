@@ -1,0 +1,45 @@
+create database BooksDB;
+
+create table BooksDB.Books(
+b_id int primary key,
+books_title varchar(50),
+pub_year int,
+price int);
+
+create table BooksDB.authors(
+a_id int primary key,
+author varchar(30),
+gender varchar(10),
+b_id int,
+foreign key(b_id) references Books(b_id));
+
+insert into BooksDB.Books values 
+(1,"Harry potter",2001,5000),
+(2,"life pie",2003,700),
+(3,"thirukural",31,500),
+(4,"ponnin selvan",1985,450),
+(5,"dune",1965,1500),
+(6,"np",2010,300);
+
+insert into BooksDB.authors values
+(1,"J.K.Roulings","female"),
+(2,"richerd","male"),
+(3,"thiruvalluvar","male"),
+(4,"vali","male"),
+(5,"frank","male"),
+(6,"kks","female");
+
+select * from BooksDB.Books;
+
+select * from BooksDB.Books where books_title = "thirukural";
+
+UPDATE BooksDB.Books SET price= 600 WHERE books_title ="np";
+select * from BooksDB.books;
+
+delete from BooksDB.Books where books_title ="np";
+select * from BooksDB.Books;
+
+select avg(price) from BooksDb.Books;
+
+select books_title,author from BooksDB.Books
+join BooksDB.authors on BooksDB.B_id=BooksDB.a_id;
